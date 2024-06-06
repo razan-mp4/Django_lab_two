@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Invoices{% endblock %}
+
+{% block content %}
+    <h1>Invoices</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'invoice_create' %}">Add New Invoice</a>
+    <ul class="list-group">
+        {% for invoice in invoices %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ invoice.date }} - {{ invoice.patient.first_name }} {{ invoice.patient.last_name }} - ${{ invoice.amount }}
+                <div>
+                    <a href="{% url 'invoice_update' invoice.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'invoice_delete' invoice.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

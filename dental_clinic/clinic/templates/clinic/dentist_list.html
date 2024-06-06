@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Dentists{% endblock %}
+
+{% block content %}
+    <h1>Dentists</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'dentist_create' %}">Add New Dentist</a>
+    <ul class="list-group">
+        {% for dentist in dentists %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Dr. {{ dentist.first_name }} {{ dentist.last_name }} - {{ dentist.specialty }}
+                <div>
+                    <a href="{% url 'dentist_update' dentist.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'dentist_delete' dentist.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

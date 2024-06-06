@@ -1,0 +1,13 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Dentist Form{% endblock %}
+
+{% block content %}
+    <h1>{{ form.instance.id|yesno:"Edit Dentist,Add New Dentist" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+    <a href="{% url 'dentist_list' %}" class="btn btn-secondary mt-3">Back to List</a>
+{% endblock %}

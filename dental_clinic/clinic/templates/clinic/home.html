@@ -1,0 +1,15 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Dental Clinic</h1>
+    <ul class="list-group mt-3">
+        <li class="list-group-item"><a href="{% url 'patient_list' %}">Patients</a></li>
+        <li class="list-group-item"><a href="{% url 'dentist_list' %}">Dentists</a></li>
+        <li class="list-group-item"><a href="{% url 'appointment_list' %}">Appointments</a></li>
+        <li class="list-group-item"><a href="{% url 'treatment_list' %}">Treatments</a></li>
+        <li class="list-group-item"><a href="{% url 'invoice_list' %}">Invoices</a></li>
+        <li class="list-group-item"><a href="{% url 'feedback_list' %}">Feedbacks</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Treatments{% endblock %}
+
+{% block content %}
+    <h1>Treatments</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'treatment_create' %}">Add New Treatment</a>
+    <ul class="list-group">
+        {% for treatment in treatments %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ treatment.name }} - ${{ treatment.cost }}
+                <div>
+                    <a href="{% url 'treatment_update' treatment.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'treatment_delete' treatment.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

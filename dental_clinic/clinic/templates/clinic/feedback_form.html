@@ -1,0 +1,13 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Feedback Form{% endblock %}
+
+{% block content %}
+    <h1>{{ form.instance.id|yesno:"Edit Feedback,Add New Feedback" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+    <a href="{% url 'feedback_list' %}" class="btn btn-secondary mt-3">Back to List</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Feedbacks{% endblock %}
+
+{% block content %}
+    <h1>Feedbacks</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'feedback_create' %}">Add New Feedback</a>
+    <ul class="list-group">
+        {% for feedback in feedbacks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ feedback.patient.first_name }} {{ feedback.patient.last_name }} about Dr. {{ feedback.dentist.first_name }} {{ feedback.dentist.last_name }}: {{ feedback.rating }} stars - {{ feedback.comments }}
+                <div>
+                    <a href="{% url 'feedback_update' feedback.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'feedback_delete' feedback.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

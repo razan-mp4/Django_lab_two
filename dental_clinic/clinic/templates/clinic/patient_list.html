@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Patients{% endblock %}
+
+{% block content %}
+    <h1>Patients</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'patient_create' %}">Add New Patient</a>
+    <ul class="list-group">
+        {% for patient in patients %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ patient.first_name }} {{ patient.last_name }} - {{ patient.phone }}
+                <div>
+                    <a href="{% url 'patient_update' patient.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'patient_delete' patient.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "clinic/base.html" %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block content %}
+    <h1>Appointments</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'appointment_create' %}">Add New Appointment</a>
+    <ul class="list-group">
+        {% for appointment in appointments %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ appointment.date }} - {{ appointment.patient.first_name }} {{ appointment.patient.last_name }} with Dr. {{ appointment.dentist.first_name }} {{ appointment.dentist.last_name }}
+                <div>
+                    <a href="{% url 'appointment_update' appointment.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'appointment_delete' appointment.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
